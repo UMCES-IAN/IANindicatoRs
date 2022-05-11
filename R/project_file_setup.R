@@ -41,10 +41,4 @@ setup_basic_project <- function(parameters, name, base_dir = "."){
              bare = TRUE, #don't need to discover packages
              force = TRUE) #accept home directory lockfile
 
-  #after activation, restore to lockfile
-  renv::restore(project = root,
-                lockfile = "renv.lock",
-                packages = NULL,
-                clean = FALSE)
-
 }
