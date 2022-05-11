@@ -20,20 +20,41 @@ E.g. For the park walkability indicator, I have Trust for Public Land (TPL) park
 knitr::opts_chunk$set(echo = TRUE) ##see code and output from chunks
 ```
 
+Now to explicity define the package versions we use so people in the future can be more successful in rerunning your analysis.
+
 ```{r reproducibility}
-##run this when first starting your own project
-renv::restore()
+##run this when first starting your project
+#after activation, restore to lockfile
+  renv::restore(project = root, #same level as .Rproj
+                lockfile = "renv.lock", #file that keeps track of package info
+                packages = NULL,
+                clean = FALSE) #doesn't delete extra packages laying around
+
+
+#if you are using different libraries or need to add more than provided
+#please update the lockfile so people will know the version you are using
+
+#steps:
+#1. use renv::snapshot(), this will look at your current libraries and update
+#the renv.lock file that contains package info
+
+#2. Message me (Joe Edgerton) via slack or email and we could update this file
+#to the "main" lockfile
 
 ```
 
 ```{r download packages, message=FALSE}
 ##install packages from cran if you need more packages than provided
+
 # my_packages <- c("<your package>")
 # 
 # install.packages(pkgs = my_packages,
 #                  repos = "https://cran.r-project.org")
 
-##use remotes::install_github(repo = "username/repo-name") for packages on github
+
+##for packages on github
+
+#use remotes::install_github(repo = "username/repo-name") 
 ```
 
 ```{r install packages, message=FALSE}
@@ -54,15 +75,16 @@ theme_set(theme_bw) ##using a preset theme for all following plots
 
 # data
 
-## import
-
-### db
+## db setup
 
 Environmental variables for database (db) access:
 
 Save username and password as environment variables,
 this keeps secrets local on your computer and will help with security and
 ease of access.
+
+Description:
+"Starting with version 1.6, RStudio Connect allows R Environment Variables to be saved at the application level. The variables are encrypted on-disk, and in-memory." [https://db.rstudio.com/best-practices/deployment/]
 
 Follow and run this in your console or in a chunk:
 
@@ -120,7 +142,7 @@ Step 2. Read data from the db into your R environment so you can work on it.
 
 ```{r db read data, eval=FALSE}
 ##to access data inside the db
-table_you_need <- dbReadTable(conn = conn, "[table you need]")
+table_you_need <- dbReadTable(conn = conn, "[table you need in db]")
 
 ```
 
@@ -142,22 +164,30 @@ copy_dm_to(dest = conn, ##specifies the connection object for the database
 
 ```
 
-```{r, eval=FALSE}
-##please disconnect from the database when you're done
-dbDisconnect(conn)
-```
+Now you can begin to import, clean, upload, and analyze your indicator data.
 
+## Import (CSVs, Excel sheets, APIs, etc.)
 
-### CSVs, Excel sheets, APIs, etc
+Import data that will eventually go into the db.
 
 ```{r data import}
-##load files into a data folder
+##load files into a data folder using: here("data", "[indicator]")
 
 ```
 
 ## clean
 
+Clean or extract data from the files to make into tables for upload.
+
 ```{r tidy/transform data}
+# [https://r4ds.had.co.nz/tidy-data.html] is a good chapter to refer to tidy data 
+
+```
+
+## db
+
+```{r upload data to be reference below}
+#see Step 3. for upload instruction
 
 ```
 
@@ -165,4 +195,11 @@ dbDisconnect(conn)
 
 ```{r}
 
+```
+
+# SUPER IMPORTANT
+
+```{r, eval=FALSE}
+##please disconnect from the database when you're done using it, thanks!
+dbDisconnect(conn)
 ```
