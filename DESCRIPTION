@@ -1,0 +1,22 @@
+Package: IANindicatoRs
+Type: Package
+Title: IAN Data Analysis Template with Database Framework
+Version: 0.1.0
+Author: Joseph Edgerton
+Maintainer: Joseph Edgerton <jedgerton@umces.edu>
+Description: An analysis RMD template that staff can use to:
+    be more consistent in their analyses and help with
+    troubleshooting, have a framework for working with a database,
+    and use a specific list of packages to help with
+    reproducibility.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/UMCES-IAN/IANindicatoRs
+BugReports: https://github.com/UMCES-IAN/IANindicatoRs/issues
+Imports: 
+    fs,
+    glue,
+    purrr,
+    renv,
+    usethis

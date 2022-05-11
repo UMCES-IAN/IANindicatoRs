@@ -1,0 +1,170 @@
+---
+title: "Template Title"
+author:
+  name: "Your name"
+  affiliation: "Univeristy of Maryland Center of Environmental Science Integration and Application Network"
+date: "`r Sys.time()`"
+output:
+  html_document:
+    theme: yeti
+    toc: true
+---
+
+Project: Which project?
+
+Indicator: Which indicator(s)?
+
+Purpose: Please indicate the findings or caveats of the indicator data analysis (exploratory or not).
+
+# Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) ##see code and output from chunks
+```
+
+```{r reproducibility}
+##run this when first starting your own project
+renv::restore()
+
+```
+
+```{r download packages, message=FALSE}
+##install packages from cran if you need more packages than provided
+# my_packages <- c("<your package>")
+# 
+# install.packages(pkgs = my_packages,
+#                  repos = "https://cran.r-project.org")
+
+##use remotes::install_github(repo = "username/repo-name") for packages on github
+```
+
+```{r install packages, message=FALSE}
+library(tidyverse)
+library(here)
+library(DBI)
+library(RMariaDB)
+library(dm)
+library(renv)
+##list other libraries below that you are using
+```
+
+
+```{r aesthetics}
+theme_set(theme_bw) ##using a preset theme for all following plots
+##can be overwritten for each plot using theme(...) arguments
+```
+
+# data
+
+## import
+
+### db
+
+Environmental variables for database (db) access:
+
+Save username and password as environment variables,
+this keeps secrets local on your computer and will help with security and
+ease of access.
+
+Follow and run this in your console or in a chunk:
+
+file.edit("~/.Renviron")
+
+Write these into your file with the appropriate project name,
+then save the following:
+
+[project]_db_drv = [provided db drv]
+
+[project]_db_name = [provided db name]
+
+[project]_db_username = [provided username]
+
+[project]_db_password = [provided [username password]
+
+[project]_db_host = [provided host]
+
+[project]_db_port = [provided port]
+
+Then follow the code below:
+
+Step 1. Open the connection to the db.
+
+```{r connect to database, eval=FALSE}
+##open the connection to the database
+
+conn <- DBI::dbConnect(drv = Sys.getenv("[project]_db_drv"),
+               dbname = Sys.getenv("[project]_db_name"),
+               username = Sys.getenv("[project]_db_username"),
+               password = Sys.getenv("[project]_db_password"),
+               host = Sys.getenv("[project]_db_host"),
+               port = Sys.getenv("[project]_db_port"),
+               sslmode = 'require'
+               )
+##If everything goes ok, then you should have a
+##connection object in your "Environment" window
+
+##You should be good to read/write to the db! Woohoo!
+```
+
+Step 1a. (optional) Check out what tables are inside the db and get info about the
+db connection.
+
+```{r db information, eval=FALSE}
+##check out tables in db
+dbListTables(conn)
+
+##check on connection info, if needed
+dbGetInfo(conn)
+
+```
+
+Step 2. Read data from the db into your R environment so you can work on it.
+
+```{r db read data, eval=FALSE}
+##to access data inside the db
+table_you_need <- dbReadTable(conn = conn, "[table you need]")
+
+```
+
+Step 3. Write data from a file or from a data frame and send to the db. This step is divided into two parts below.
+
+```{r db write data, eval=FALSE}
+
+##Part 1
+
+test <- dm(df) %>% ##create a dm object to prepare you data to go to the database.
+  dm_add_pk(df, ID) ##need to establish a primary key (unique ID for each row)
+
+##Part 2
+
+copy_dm_to(dest = conn, ##specifies the connection object for the database
+             dm = test, ##specifies the table to send to the database
+             temporary = FALSE, ##you want this to be permanent
+             table_names = ~"my test table") ##what will people search for and see in the db? Please appropriately name tables to avoid confusion.
+
+```
+
+```{r, eval=FALSE}
+##please disconnect from the database when you're done
+dbDisconnect(conn)
+```
+
+
+### CSVs, Excel sheets, APIs, etc
+
+```{r data import}
+##load files into a data folder
+
+```
+
+## clean
+
+```{r tidy/transform data}
+
+```
+
+## analysis
+
+```{r}
+
+```
