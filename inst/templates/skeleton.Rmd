@@ -25,8 +25,7 @@ Now to explicity define the package versions we use so people in the future can 
 ```{r reproducibility}
 ##run this when first starting your project
 #after activation, restore to lockfile
-  renv::restore(project = root, #same level as .Rproj
-                lockfile = "renv.lock", #file that keeps track of package info
+  renv::restore(lockfile = "renv.lock", #file that keeps track of package info
                 packages = NULL,
                 clean = FALSE) #doesn't delete extra packages laying around
 
