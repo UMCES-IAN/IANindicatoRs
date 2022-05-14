@@ -1,10 +1,10 @@
 # `standard` `parameters` is obviously dummy for whatever conventions you use
 # name is the name of the actual project
 
-setup_basic_project <- function(IAN_project, indicator, base_dir = "."){
-  usethis::ui_done("setting up standard folder structure")
+setup_project <- function(IAN_project, indicator, base_dir = "."){
+  usethis::ui_done("setting up project folder structure for indicator analysis")
   root <- fs::path(base_dir, glue::glue(format(Sys.Date(),
-                                               "%Y-%m-%d"),"_{IAN_project}_{indicator}"))
+                                               "%Y-%m-%d"),"_{IAN_project}"))
   usethis::create_project(path = root, open = FALSE)
   # add the standard internal structure
   sub <- c("data","output")
@@ -18,7 +18,7 @@ setup_basic_project <- function(IAN_project, indicator, base_dir = "."){
       usethis::use_template(
         template = "skeleton.Rmd",
         save_as = fs::path("R", glue::glue(format(Sys.Date(),
-                                                  "%Y-%m-%d"),"_{parameters}_{name}.Rmd")),
+                                                  "%Y-%m-%d"),"_{IAN_project}_template.Rmd")),
         data = list(IAN_project = IAN_project),
         # use the actual package name
         package = "IANindicatoRs",
