@@ -1,6 +1,3 @@
-# `standard` `parameters` is obviously dummy for whatever conventions you use
-# name is the name of the actual project
-
 #' setup_project
 #'
 #' Create a project folder structure and directory for file organization, add an Rmarkdown
