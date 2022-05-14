@@ -75,40 +75,6 @@ theme_set(theme_bw) ##using a preset theme for all following plots
 
 # data
 
-## db setup
-
-Environmental variables for database (db) access:
-
-Save username and password as environment variables,
-this keeps secrets local on your computer and will help with security and
-ease of access.
-
-Description:
-"Starting with version 1.6, RStudio Connect allows R Environment Variables to be saved at the application level. The variables are encrypted on-disk, and in-memory." [https://db.rstudio.com/best-practices/deployment/]
-
-Follow and run this in your console or in a chunk:
-
-file.edit("~/.Renviron")
-
-Write these into your file with the appropriate project name,
-then save the following:
-
-[project]_db_drv = [provided db drv]
-
-[project]_db_name = [provided db name]
-
-[project]_db_username = [provided username]
-
-[project]_db_password = [provided [username password]
-
-[project]_db_host = [provided host]
-
-[project]_db_port = [provided port]
-
-Then follow the code below:
-
-Step 1. Open the connection to the db.
-
 ```{r connect to database, eval=FALSE}
 ##open the connection to the database
 
@@ -171,7 +137,7 @@ Now you can begin to import, clean, upload, and analyze your indicator data.
 Import data that will eventually go into the db.
 
 ```{r data import}
-##load files into a data folder using: here("data", "[indicator]")
+
 
 ```
 
@@ -180,14 +146,13 @@ Import data that will eventually go into the db.
 Clean or extract data from the files to make into tables for upload.
 
 ```{r tidy/transform data}
-# [https://r4ds.had.co.nz/tidy-data.html] is a good chapter to refer to tidy data 
 
 ```
 
 ## db
 
 ```{r upload data to be reference below}
-#see Step 3. for upload instruction
+
 
 ```
 
