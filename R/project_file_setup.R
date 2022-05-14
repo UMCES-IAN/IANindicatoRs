@@ -4,6 +4,14 @@
 #' template to the Rstudio template options and have one be an example template,
 #' and initialize the new project with renv to then refer to a pre-defined renv.lock file.
 #'
+#' @exportPattern "^[[:alpha:]]+"
+#' @import fs
+#' @import glue
+#' @importFrom purrr walk
+#' @import renv
+#' @import usethis
+#'
+#'
 #' @param IAN_project what the IAN project is named
 #' @param base_dir where should the project be placed in your file directory
 #'
