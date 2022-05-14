@@ -15,9 +15,9 @@ LazyData: true
 URL: https://github.com/UMCES-IAN/IANindicatoRs
 BugReports: https://github.com/UMCES-IAN/IANindicatoRs/issues
 Imports: 
-    fs,
-    glue,
-    purrr,
-    renv,
+    fs::path(),
+    glue::glue(),
+    purrr::walk(),
+    renv::init(),
     usethis
 RoxygenNote: 7.1.1
