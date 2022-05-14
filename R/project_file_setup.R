@@ -4,7 +4,7 @@
 #' template to the Rstudio template options and have one be an example template,
 #' and initialize the new project with renv to then refer to a pre-defined renv.lock file.
 #'
-#' @exportPattern ("^[[:alpha:]]+") 
+#' @exportPattern ^[[:alpha:]]+
 #' @importFrom fs path
 #' @importFrom glue glue
 #' @importFrom purrr walk
