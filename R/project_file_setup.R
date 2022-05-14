@@ -16,7 +16,7 @@
 #' @param base_dir where should the project be placed in your file directory
 #'
 #' @return a new project that with folders, an Rmarkdown folder, and a renv.lock file
-#' @export setup_project
+#' @export
 #'
 #' @examples
 #' # a new IAN project has started
