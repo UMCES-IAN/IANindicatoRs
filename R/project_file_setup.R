@@ -1,7 +1,23 @@
 # `standard` `parameters` is obviously dummy for whatever conventions you use
 # name is the name of the actual project
 
-setup_project <- function(IAN_project, indicator, base_dir = "."){
+#' setup_project
+#'
+#' Create a project folder structure and directory for file organization, add an Rmarkdown
+#' template to the Rstudio template options and have one be an example template,
+#' and initialize the new project with renv to then refer to a pre-defined renv.lock file.
+#'
+#' @param IAN_project what the IAN project is named
+#' @param base_dir where should the project be placed in your file directory
+#'
+#' @return a new project that with folders, an Rmarkdown folder, and a renv.lock file
+#' @export setup_project
+#'
+#' @examples
+#' # a new IAN project has started
+#' setup_project("Chesapeake_Bay", here("Desktop"))
+#' 
+setup_project <- function(IAN_project, base_dir = "."){
   usethis::ui_done("setting up project folder structure for indicator analysis")
   root <- fs::path(base_dir, glue::glue(format(Sys.Date(),
                                                "%Y-%m-%d"),"_{IAN_project}"))
