@@ -9,18 +9,22 @@ setup_project(IAN_project, base_dir = ".")
 \arguments{
 \item{IAN_project}{what the IAN project is named}
 
-\item{base_dir}{where should the project be placed in your file directory}
+\item{base_dir}{where should the project be placed in your file directory. Can use
+here::here() to keep file paths relative, or use absolute path from your computer
+(less preferred), e.g., "/Users/yourName/Documents/Projects/etc"}
 }
 \value{
 a new project that with folders, an Rmarkdown folder, and a renv.lock file
 }
 \description{
-Create a project folder structure and directory for file organization, add an Rmarkdown
-template to the Rstudio template options and have one be an example template,
+Create a project folder structure and directory for file organization,
+provide framework for a connection to a database within an rstudio session,
+add an Rmarkdown template to the Rstudio template options and have one be an example template,
 and initialize the new project with renv to then refer to a pre-defined renv.lock file.
 }
 \examples{
-# a new IAN project has started
+#a new IAN project has started for the "Chesapeake Bay."
+#Y-m-d will be added to the front of the project name.
 setup_project("Chesapeake_Bay", here("Desktop"))
 
 }
