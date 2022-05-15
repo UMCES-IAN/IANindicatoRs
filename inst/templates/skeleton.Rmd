@@ -12,15 +12,11 @@ output:
 
 Purpose: [Please indicate what the data are, and provide a brief description of the indicator data analysis (exploratory or not)].
 
-E.g. For the park walkability indicator, I have Trust for Public Land (TPL) park shapefiles that contain demographic data about populations that can walk to a park in 10 minutes or less. I will average the total population that can walk to a park in 10 min and the diverse group population that can walk to a park in 10 min to make an "Park accesibility" percentge score as the indicator.
+E.g. For the park walkability indicator, I have Trust for Public Land (TPL) park shapefiles that contain demographic data about populations that can walk to a park in 10 minutes or less. I will average the total population that can walk to a park in 10 min and the diverse group population that can walk to a park in 10 min to make an "Park accessibility" percentage score as the indicator.
 
 # Setup
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE) ##see code and output from chunks
-```
-
-Now to explicity define the package versions we use so people in the future can be more successful in rerunning your analysis.
+Explicity define the package versions we use so people in the future can be more successful in rerunning your analysis.
 
 ```{r reproducibility}
 ##run this when first starting your project
@@ -40,6 +36,10 @@ Now to explicity define the package versions we use so people in the future can 
 #2. Message me (Joe Edgerton) via slack or email and we could update this file
 #to the "main" lockfile
 
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) ##see code and output from chunks
 ```
 
 ```{r download packages, message=FALSE}
