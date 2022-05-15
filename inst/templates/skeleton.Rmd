@@ -16,30 +16,26 @@ E.g. For the park walkability indicator, I have Trust for Public Land (TPL) park
 
 # Setup
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) ##see code and output from chunks
+```
+
 Explicity define the package versions we use so people in the future can be more successful in rerunning your analysis.
 
 ```{r reproducibility}
-##run this when first starting your project
 #after activation, restore to lockfile
-  renv::restore(lockfile = "renv.lock", #file that keeps track of package info
-                packages = NULL,
-                clean = FALSE) #doesn't delete extra packages laying around
-
+  # renv::restore(lockfile = "renv.lock") #file that keeps track of packages
 
 #if you are using different libraries or need to add more than provided
-#please update the lockfile so people will know the version you are using
+#please update the lockfile, with the steps below, so people will know the version and packages you are using
 
 #steps:
-#1. use renv::snapshot(), this will look at your current libraries and update
+#1. use renv::snapshot() in the console pane, this will look at your current libraries and update
 #the renv.lock file that contains package info
 
-#2. Message me (Joe Edgerton) via slack or email and we could update this file
-#to the "main" lockfile
+#2. Message me (Joe Edgerton) via slack or email and we could update this file on github
+#to the "main" lockfile so everyone can update their renv.lock file
 
-```
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE) ##see code and output from chunks
 ```
 
 ```{r download packages, message=FALSE}
