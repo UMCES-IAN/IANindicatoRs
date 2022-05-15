@@ -58,8 +58,6 @@ setup_project <- function(IAN_project, base_dir = "."){
       # more as fit your needs
     }
   )
-  # switch over to the new project
-  #usethis::proj_activate(root) Might not be needed since opening two windows
 
   #initialize the project with renv
   renv::init(project = root,
